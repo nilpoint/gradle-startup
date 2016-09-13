@@ -29,3 +29,29 @@ Run the script,
 gradle helloWorld
 gradle --quiet helloWorld
 ```
+### Default tasks
+
+Show the available tasks for a project.
+```bash
+gradle -q tasks
+```
+
+Show the general help information.
+```bash
+gradle -q help
+```
+
+See the properties of a project.
+```bash
+gradle -q properties
+```
+
+Show dependencies (if any) for a project.
+```bash
+gradle -q dependencies
+```
+
+Display sub-projects for a project.
+```bash
+gradle -q projects
+```
