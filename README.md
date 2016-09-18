@@ -55,3 +55,19 @@ Display sub-projects for a project.
 ```bash
 gradle -q projects
 ```
+
+### Task name abbreviation
+
+With task name abbreviation, we don't have to type the complete task name on
+the command line. We only have to type enough of the name to make it unique 
+within the build.
+
+```bash
+gradle -q hello
+```
+
+We can also abbreviate each word in a camel case task name.
+```bash
+gradle -q hW
+```
+
