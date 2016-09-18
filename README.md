@@ -71,3 +71,11 @@ We can also abbreviate each word in a camel case task name.
 gradle -q hW
 ```
 
+### Executing multiple tasks
+
+To execute multiple tasks we only have to add each task name to the command line.
+
+```bash
+gradle -q hW tasks
+```
+
