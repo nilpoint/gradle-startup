@@ -89,3 +89,12 @@ logging options.
 ```bash
 gradle --info helloWorld
 ```
+
+### Changing the biuld file and directory
+We created our build file with the name build.gradle . This is the default name
+for a build file. Gradle will look for a file with this name in the current directory,
+to execute the build. But we can change this with the command-line options
+--build-file (or -b ) and --project-dir (or -p ).
+```bash
+gradle --project-dir hello-world -q hW
+```
