@@ -59,7 +59,7 @@ gradle -q projects
 ### Task name abbreviation
 
 With task name abbreviation, we don't have to type the complete task name on
-the command line. We only have to type enough of the name to make it unique 
+the command line. We only have to type enough of the name to make it unique
 within the build.
 
 ```bash
@@ -79,3 +79,13 @@ To execute multiple tasks we only have to add each task name to the command line
 gradle -q hW tasks
 ```
 
+### Logging options
+Let's look at some of the options in more detail. The options --quiet (or -q ),
+--debug (or -d ), --info (or -i ), --stacktrace (or -s ), and --full-stacktrace
+(or -S ) control the amount of output we see when we execute tasks.
+
+The options --stacktrace and --full-stracktrace can be combined with the other
+logging options.
+```bash
+gradle --info helloWorld
+```
