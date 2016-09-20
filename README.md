@@ -98,3 +98,16 @@ to execute the build. But we can change this with the command-line options
 ```bash
 gradle --project-dir hello-world -q hW
 ```
+
+### Running tasks without execution
+
+With the option --dry-run (or -m ), we can run all the tasks without really executing
+them. When we use the dry run option, we can see which tasks are executed, so we
+get an insight into which tasks are involved in a certain build scenario. And we don't
+have to worry if the tasks are actually executed. Gradle builds up a Directed Acyclic
+Graph (DAG) with all the tasks before any task is executed. The DAG is built so that
+tasks will be executed in order of dependencies and so that a task is executed only
+once.
+```bash
+gradle --dry-run helloWorld
+```
