@@ -149,3 +149,7 @@ a Gradle build.
 ```bash
 export GRADLE_OPTS="-Dorg.gradle.daemon=true"
 ```
+
+### Profiling
+
+`--profile` option records the time that certain tasks take to complete. The data is saved in an HTML file in the directory `build/reports/profile`.
