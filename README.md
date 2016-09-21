@@ -101,13 +101,51 @@ gradle --project-dir hello-world -q hW
 
 ### Running tasks without execution
 
-With the option --dry-run (or -m ), we can run all the tasks without really executing
-them. When we use the dry run option, we can see which tasks are executed, so we
-get an insight into which tasks are involved in a certain build scenario. And we don't
-have to worry if the tasks are actually executed. Gradle builds up a Directed Acyclic
-Graph (DAG) with all the tasks before any task is executed. The DAG is built so that
-tasks will be executed in order of dependencies and so that a task is executed only
-once.
+With the option `--dry-run` (or `-m` ), we can run all the tasks without really 
+executing them. When we use the dry run option, we can see which tasks are executed, 
+so we get an insight into which tasks are involved in a certain build scenario. 
+And we don't have to worry if the tasks are actually executed. Gradle builds up a
+Directed Acyclic Graph (DAG) with all the tasks before any task is executed. The DAG
+is built so that tasks will be executed in order of dependencies and so that a task 
+is executed only once.
 ```bash
 gradle --dry-run helloWorld
+```
+
+### Gradle daemon
+
+The command-line option, `--daemon` , starts a new Java process
+that will have all Gradle classes and libraries already loaded, and then we execute
+the build. The next time when we run Gradle with the --daemon option, only the
+build is executed, because the JVM, with the required Gradle classes and libraries,
+is already running.
+
+```bash
+gradle --daemon helloWorld
+```
+
+We use the command-line option `--no-daemon` to run a Gradle
+build without utilizing the daemon:
+
+```bash
+gradle --no-daemon hW
+```
+
+To stop the daemon process, we use the command-line option `--stop`:
+```bash
+gradle --stop
+```
+
+To always use the `--daemon` command-line option, without typing it every time we
+run the gradle command, we can create an alias.
+```bash
+alias gradled='gradle --daemon'
+```
+
+Instead of using the `--daemon` command-line option, we can use the Java system
+property org.gradle.daemon to enable the daemon. We can add this property
+to environment variable `GRADLE_OPTS`, so that it is always used when we run
+a Gradle build.
+```bash
+export GRADLE_OPTS="-Dorg.gradle.daemon=true"
 ```
