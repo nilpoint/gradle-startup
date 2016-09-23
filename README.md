@@ -101,12 +101,12 @@ gradle --project-dir hello-world -q hW
 
 ### Running tasks without execution
 
-With the option `--dry-run` (or `-m` ), we can run all the tasks without really 
-executing them. When we use the dry run option, we can see which tasks are executed, 
-so we get an insight into which tasks are involved in a certain build scenario. 
+With the option `--dry-run` (or `-m` ), we can run all the tasks without really
+executing them. When we use the dry run option, we can see which tasks are executed,
+so we get an insight into which tasks are involved in a certain build scenario.
 And we don't have to worry if the tasks are actually executed. Gradle builds up a
 Directed Acyclic Graph (DAG) with all the tasks before any task is executed. The DAG
-is built so that tasks will be executed in order of dependencies and so that a task 
+is built so that tasks will be executed in order of dependencies and so that a task
 is executed only once.
 ```bash
 gradle --dry-run helloWorld
@@ -153,3 +153,42 @@ export GRADLE_OPTS="-Dorg.gradle.daemon=true"
 ### Profiling
 
 `--profile` option records the time that certain tasks take to complete. The data is saved in an HTML file in the directory `build/reports/profile`.
+
+### Gradle user interface
+
+To start the GUI, we invoke the following command:
+
+```
+gradle --gui
+```
+
+#### Task Tree
+
+The Task Tree tab shows projects and tasks found in our build project. We can
+execute a task by double-clicking on the task name.
+
+#### Favorites
+
+The Favorites tab stores tasks we want to execute regularly. We can add a task by
+right-clicking on the task in the Task Tree tab and selecting the Add To Favorites
+menu option.
+
+#### Command Line
+
+On the Command Line tab, we can enter any Gradle command we normally would
+enter on the command prompt.
+
+#### Setup
+
+The last tab is the Setup tab. Here, we can change the project directory, which
+is set by default to the current directory.
+
+In the GUI, we can select the logging level from the Log Level
+drop-down box with the different log levels. We can choose one of `Debug`, `Info`,
+`Lifecyle`, and `Error` as the log levels. The Error log level only shows errors and
+is the least verbose, while Debug is the most verbose log level. The Lifecyle
+log level is the default log level.
+
+Finally, we can define a different way to start Gradle for the build, with the
+option Use `Custom Gradle Executor`. For example, we can define a different batch
+or script file with extra setup information to run the build process.
