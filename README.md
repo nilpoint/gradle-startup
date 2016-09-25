@@ -288,3 +288,6 @@ Groovy closures can also be used to provide a task action. When the action is ex
 
 There are 2 special exceptions which a task action can throw to abort execution and continue without failing the build. A task action can abort execution of the action and continue to the next action of the task by throwing a `StopActionException`. A task action can abort execution of the task and continue to the next task by throwing a `StopExecutionException`. Using these exceptions allows you to have precondition actions which skip execution of the task, or part of the task, if not true.
 
+### Build scripts are Groovy code
+
+We must keep in mind that Gradle scripts use Groovy. This means we can use all the Groovy's good stuff in our scripts.
