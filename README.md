@@ -291,3 +291,84 @@ There are 2 special exceptions which a task action can throw to abort execution 
 ### Build scripts are Groovy code
 
 We must keep in mind that Gradle scripts use Groovy. This means we can use all the Groovy's good stuff in our scripts.
+
+### Defining dependencies between tasks
+
+In Gradle, we can add task dependencies with the dependsOn method for a task.
+
+```gradle
+task first << { task ->
+  println "Run ${task.name}"   
+}
+
+task second << { task ->
+  println "Run ${task.name}"
+}
+
+// Define dependency of task second on task first
+second.dependsOn 'first'
+```
+
+Another way to define the dependency between tasks is to set the dependsOn property instead of using the dependsOn method.
+
+```gradle
+task first << { task ->
+  println "Run ${task.name}"   
+}
+
+task second << { task ->
+  println "Run ${task.name}"
+}
+
+second.dependsOn = ['first']
+
+task third(dependsOn: 'second') << { task ->
+  println "Run ${task.name}"
+}
+```
+
+We can define a dependency on a task that is defined later in the build script. Gradle will set up all task dependencies during the configuration phase and not during the execution phase.
+
+```gradle
+task third(dependsOn: 'second') << { task ->
+  println "Run ${task.name}"
+}
+
+task second(dependsOn: 'first') << { task ->
+  println "Run ${task.name}"
+}
+
+task first << { task ->
+  println "Run ${task.name}"   
+}
+```
+It is important to take a good look at your build scripts and see if things can be organized better and if code can be reused instead of repeated.
+
+```gradle
+def printTaskName = { task ->
+  println "Run ${task.name}"
+}
+task third(dependsOn: 'second') << printTaskName
+task second(dependsOn: 'first') << printTaskName
+task first << printTaskName
+```
+
+We can also use a closure to define the task dependencies. The closure must return a single task name or task object, or a collection of task names or task objects. Using this technique, we can really fine-tune the dependencies for our task.
+
+```gradle
+def printTaskName = { task ->
+  println "Run ${task.name}"
+}
+
+task second << printTaskName
+
+second.dependsOn {
+  project.task.findAll { task ->
+    task.name.contains 'f'
+  }
+}
+
+task first << printTaskName
+
+task beforeHand << printTaskName
+```
