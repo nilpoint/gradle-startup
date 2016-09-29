@@ -372,3 +372,23 @@ task first << printTaskName
 
 task beforeHand << printTaskName
 ```
+
+### Setting default tasks
+
+To set the default task or tasks, we use the method defaultTasks . We pass the names of the tasks that need to be executed, to the method.
+
+```gradle
+defaultTasks 'second', 'first'
+
+task first {
+  doFirst {
+    println "I'm first"
+  }
+}
+
+task second {
+  doLast {
+    println "I'm second"
+  }
+}
+```
