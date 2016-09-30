@@ -142,7 +142,7 @@ export GRADLE_OPTS="-Dorg.gradle.daemon=true"
 
 ### Profiling
 
-`--profile` option records the time that certain tasks take to complete. 
+`--profile` option records the time that certain tasks take to complete.
 The data is saved in an HTML file in the directory `build/reports/profile`.
 
 ### Gradle user interface
@@ -193,8 +193,8 @@ task simple << {
 ```
 
 A couple of interesting things happen with this small build script. Gradle reads
-the script file and creates a `Project` object. The build script configures the 
-`Project` object, and finally the set of tasks to be executed is determined and 
+the script file and creates a `Project` object. The build script configures the
+`Project` object, and finally the set of tasks to be executed is determined and
 executed.
 
 The `Project` object has several properties and methods, and it is available in our build scripts. We can use the variable name `projec` to reference the `Project` object, but we can also leave out this variable name to reference properties nd methods of the `Project` object. Gradle will automatically try to map roperties and methods in the build script to the `Project` object.
@@ -378,6 +378,7 @@ task beforeHand << printTaskName
 To set the default task or tasks, we use the method defaultTasks . We pass the names of the tasks that need to be executed, to the method.
 
 ```gradle
+
 defaultTasks 'second', 'first'
 
 task first {
@@ -391,4 +392,11 @@ task second {
     println "I'm second"
   }
 }
+
 ```
+
+### Organizing tasks
+
+To describe our task, we can set the description property of a task. The value of the description property is used by the tasks task of Gradle.
+
+With Gradle, we can also group tasks together in so-called task groups. A task group is a set of tasks that belong together logically.
